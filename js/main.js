@@ -181,21 +181,54 @@ window.addEventListener('load', function () {
     }
 });
 
-// Show/hide form based on scroll
-window.addEventListener("scroll", function() {
+// Advertisement popup - show after 5 seconds or scroll, once per session
+document.addEventListener("DOMContentLoaded", function() {
     const quickContact = document.getElementById("quickContact");
     if (!quickContact) return;
 
-    if (window.scrollY <= 500) {
-        quickContact.style.opacity = 1;        
-        quickContact.style.pointerEvents = "auto";
-    } else {
-        quickContact.style.opacity = 0;        
-        quickContact.style.pointerEvents = "none";
+    // Check if popup was already shown in this session
+    const popupShown = sessionStorage.getItem('quickContactPopupShown');
+    
+    if (popupShown) {
+        // Hide popup if already shown
+        quickContact.style.display = 'none';
+        return;
     }
+
+    let hasShown = false;
+    const showPopup = () => {
+        if (hasShown) return;
+        hasShown = true;
+        sessionStorage.setItem('quickContactPopupShown', 'true');
+        quickContact.style.opacity = "1";
+        quickContact.style.transform = "translateY(0)";
+        quickContact.style.pointerEvents = "auto";
+    };
+
+    // Show after 5 seconds
+    const timeOut = setTimeout(showPopup, 5000);
+
+    // Show on scroll (after 300px)
+    let scrollTimeout;
+    window.addEventListener("scroll", function() {
+        if (hasShown) return;
+        
+        if (window.scrollY > 300) {
+            clearTimeout(timeOut);
+            if (!hasShown) {
+                showPopup();
+            }
+        }
+    }, { once: false });
+
+    // Cleanup on page unload
+    window.addEventListener('beforeunload', () => {
+        clearTimeout(timeOut);
+        clearTimeout(scrollTimeout);
+    });
 });
 
-// Close form if click outside
+// Close form if click outside (integrated with popup timing)
 document.addEventListener("DOMContentLoaded", function () {
     const container = document.getElementById("quickContact");
     const form = document.getElementById("qcForm");
@@ -209,19 +242,10 @@ document.addEventListener("DOMContentLoaded", function () {
     container.style.transform = "translateY(40px)";
     container.style.transition = "opacity 0.4s ease, transform 0.4s ease";
 
-    // Show once on page load
-    setTimeout(() => {
-        if (!closed) {
-            container.style.opacity = "1";
-            container.style.transform = "translateY(0)";
-        }
-    }, 600);
-
     // Click outside closes permanently
     document.addEventListener("click", function (e) {
         if (closed) return;
-
-        if (!form.contains(e.target)) {
+        if (!container.contains(e.target)) {
             closeForm();
         }
     });
@@ -232,22 +256,32 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     function closeForm() {
+        if (closed) return;
         closed = true;
+        sessionStorage.setItem('quickContactPopupShown', 'true');
         container.style.opacity = "0";
         container.style.transform = "translateY(40px)";
 
-        // HARD STOP — prevents scroll reappearance
+        // Hide after animation
         setTimeout(() => {
             container.style.display = "none";
         }, 400);
     }
+
+    // Make closeForm available globally
+    window.closeQuickContact = closeForm;
 });
 
 // Form submit
-document.getElementById("quickContactForm").addEventListener("submit", function(e){
-    e.preventDefault();
-    alert("Thank you! We will contact you soon.");
-    this.reset();
+document.addEventListener("DOMContentLoaded", function() {
+    const quickContactForm = document.getElementById("quickContactForm");
+    if (quickContactForm) {
+        quickContactForm.addEventListener("submit", function(e){
+            e.preventDefault();
+            alert("Thank you! We will contact you soon.");
+            this.reset();
+        });
+    }
 });
 document.addEventListener("DOMContentLoaded", function () {
     const popup = document.getElementById("waPopup");

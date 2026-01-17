@@ -7,8 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Free HTML Templates" name="keywords">
-    <meta content="Free HTML Templates" name="description">
+    <meta content="Interior Design, Modular Kitchen, Home Design, Commercial Interior Design" name="keywords">
+    <meta content="Diya Modular - Expert interior design and modular kitchen solutions with 10+ years of experience. Transforming spaces with creativity and precision." name="description">
+    <!-- API Configuration - Load config.js first -->
+    <script src="js/config.js"></script>
+    <script src="js/api.js" defer></script>
+    <script src="js/reviews.js" defer></script>
+    <script src="js/projects.js" defer></script>
+    <script src="js/admin.js" defer></script>
     <script src="js/main.js" defer></script>
     <!-- Favicon -->
     <link href="img/interior.png" rel="icon">
@@ -44,6 +50,7 @@
                 <h1 class="m-0 brand-text">
                     <span class="text-primary">Diya</span> Modular
                 </h1>
+                <span class="ml-2 text-white d-none d-md-inline" style="font-size: 0.85rem; font-weight: 300;">Creative Interior Design Solutions</span>
             </a>
 
             <!-- Right Side Menu -->
@@ -68,7 +75,7 @@
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 800px;">
                             <h4 class="text-primary text-uppercase font-weight-normal mb-md-3">Creative Interior Design</h4>
-                            <h3 class="display-3 text-white mb-md-4">CraftingTimeless Interiors for ModernLiving.</h3>
+                            <h2 class="text-white mb-md-4" style="font-size: 2.5rem; line-height: 1.2;">Crafting Timeless Interiors for Modern Living</h2>
                             <a href="" class="btn btn-primary py-md-3 px-md-5 mt-2 mt-md-4">Learn More</a>
                         </div>
                     </div>
@@ -78,7 +85,7 @@
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 800px;">
                             <h4 class="text-primary text-uppercase font-weight-normal mb-md-3">Creative Interior Design</h4>
-                            <h3 class="display-3 text-white mb-md-4">Modular kitchens with a creative flair</h3>
+                            <h2 class="text-white mb-md-4" style="font-size: 2.5rem; line-height: 1.2;">Modular Kitchens with a Creative Flair</h2>
                             <a href="features.html" class="btn btn-primary py-md-3 px-md-5 mt-2 mt-md-4">Learn More</a>
                         </div>
                     </div>
@@ -102,7 +109,10 @@
 <!-- Floating Quick Contact Form -->
 <div class="quick-contact-float" id="quickContact">
     <div class="qc-form" id="qcForm">
-        <h5 class="text-center mb-3">Quick Contact</h5>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="text-center mb-0" style="flex: 1;">Quick Contact</h5>
+            <button type="button" class="close-btn" onclick="if(window.closeQuickContact) window.closeQuickContact();" style="background: none; border: none; font-size: 24px; cursor: pointer; color: #777; padding: 0; margin-left: 10px;">&times;</button>
+        </div>
         <form id="quickContactForm">
             <input type="text" class="form-control mb-2" placeholder="Your Name" required>
             <input type="tel" class="form-control mb-2" placeholder="Your Phone" required>
@@ -127,7 +137,8 @@
                 </div>
                 <div class="col-lg-7 m-0 my-lg-5 pt-5 pb-5 pb-lg-2 pl-lg-5">
                     <h6 class="text-primary font-weight-normal text-uppercase mb-3">Learn About Us</h6>
-                    <h1 class="mb-4 section-title">"where every space is thoughtfully designed to reflect your lifestyle, comfort, and individuality.”</h1> With over 10+ years of experience, we bring a skilled eye for details, coupled with flawless execution, to ensure your home or commercial space is a reflection of your individual style. Whether it be a new construction or renovation projects, no matter the scope or size,Diya Modular specializes in custom design solutions tailored specifically for each project. Whether you’re looking for residential or commercial design services, you can trust that your vision will be expertly crafted under our team.</p>
+                    <h2 class="mb-4 section-title" style="font-size: 2rem; line-height: 1.3;">"Where every space is thoughtfully designed to reflect your lifestyle, comfort, and individuality."</h2>
+                    <p class="mb-4" style="font-size: 1rem; line-height: 1.7; max-width: 100%;">With over 10+ years of experience, we bring a skilled eye for details, coupled with flawless execution, to ensure your home or commercial space is a reflection of your individual style. Whether it be a new construction or renovation projects, no matter the scope or size, Diya Modular specializes in custom design solutions tailored specifically for each project. Whether you're looking for residential or commercial design services, you can trust that your vision will be expertly crafted under our team.</p>
                     <div class="row py-2">
                         <div class="col-sm-6">
                             <div class="d-flex align-items-center mb-4">
@@ -491,48 +502,60 @@
             <div class="row">
                 <div class="col-md-7 py-5 pr-md-5">
                     <h6 class="text-primary font-weight-normal text-uppercase mb-3 pt-5">Testimonial</h6>
-                    <h1 class="mb-4 section-title">Voices of Happy Homes</h1>
-                    <div class=" position-relative pb-5 mb-md-5">
-                        <div class="d-flex flex-column">
-                            <div class="d-flex align-items-center mb-3">
-                                <img class="img-fluid rounded-circle" src="img/testimonial-1.jpg" style="width: 60px; height: 60px;" alt="">
-                                <div class="ml-3">
-                                    <h5>KARTHIKEYAN</h5>
-                                    <i>Salem</i>
-                                </div>
-                            </div>
-                            <p>“Quality work and timely delivery. Truly professional.”</p>
+                    <h2 class="mb-4 section-title" style="font-size: 2rem; line-height: 1.3;">Voices of Happy Homes</h2>
+                    
+                    <!-- Average Rating Display -->
+                    <div class="mb-4">
+                        <div class="d-flex align-items-center mb-2">
+                            <span class="mr-2" style="font-size: 1.5rem; font-weight: bold;" id="average-rating-display">0.0</span>
+                            <div class="star-rating-display" id="star-rating-display"></div>
+                            <span class="ml-2" id="review-count-display">(0 Reviews)</span>
                         </div>
-                        <div class="d-flex flex-column">
-                            <div class="d-flex align-items-center mb-3">
-                                <img class="img-fluid rounded-circle" src="img/testimonial-1.jpg" style="width: 60px; height: 60px;" alt="">
-                                <div class="ml-3">
-                                    <h5>KARTHIKEYAN</h5>
-                                    <i>Salem</i>
-                                </div>
+                    </div>
+                    
+                    <!-- Reviews List Container -->
+                    <div id="reviews-list" class="position-relative pb-5 mb-md-5" style="min-height: 200px;">
+                        <div class="text-center text-muted py-4">Loading reviews...</div>
+                    </div>
+                    
+                    <!-- Review Submission Form -->
+                    <div class="mt-5 pt-4 border-top">
+                        <h5 class="mb-3" style="font-size: 1.25rem;">Share Your Experience</h5>
+                        <form id="reviewForm">
+                            <div class="form-group mb-3">
+                                <label for="reviewName" class="mb-1">Your Name</label>
+                                <input type="text" class="form-control" id="reviewName" placeholder="Enter your name" required>
                             </div>
-                            <p>“Quality work and timely delivery. Truly professional.”</p>
-                        </div>
-                        <div class="d-flex flex-column">
-                            <div class="d-flex align-items-center mb-3">
-                                <img class="img-fluid rounded-circle" src="img/testimonial-2.jpg" style="width: 60px; height: 60px;" alt="">
-                                <div class="ml-3">
-                                    <h5>Mr.Selvam</h5>
-                                    <i>Kurumbapalayam</i>
-                                </div>
+                            <div class="form-group mb-3">
+                                <label for="reviewEmail" class="mb-1">Your Email</label>
+                                <input type="email" class="form-control" id="reviewEmail" placeholder="Enter your email" required>
                             </div>
-                            <p class="m-0">“They understood our needs perfectly and delivered beyond expectations.”</p>
-                        </div>
+                            <div class="form-group mb-3">
+                                <label class="mb-1 d-block">Rating</label>
+                                <div class="star-rating-input" id="starRatingInput">
+                                    <span class="star" data-rating="1"><i class="far fa-star"></i></span>
+                                    <span class="star" data-rating="2"><i class="far fa-star"></i></span>
+                                    <span class="star" data-rating="3"><i class="far fa-star"></i></span>
+                                    <span class="star" data-rating="4"><i class="far fa-star"></i></span>
+                                    <span class="star" data-rating="5"><i class="far fa-star"></i></span>
+                                </div>
+                                <input type="hidden" id="reviewRating" name="rating" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="reviewComment" class="mb-1">Your Review</label>
+                                <textarea class="form-control" id="reviewComment" rows="4" placeholder="Share your experience..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit Review</button>
+                            <div id="reviewFormMessage" class="mt-2"></div>
+                        </form>
                     </div>
                 </div>
                 <div class="col-md-5">
-                  
-                       <div class="d-flex flex-column h-100 overflow-hidden testimonial-images">
-                            <img src="img/testimonial-1.jpg" alt="">
-                            <img src="img/testimonial-2.jpg" alt="">
-                            <img src="img/testimonial-3.jpg" alt="">
-                        </div>
-                
+                    <div class="d-flex flex-column h-100 overflow-hidden testimonial-images">
+                        <img src="img/testimonial-1.jpg" alt="">
+                        <img src="img/testimonial-2.jpg" alt="">
+                        <img src="img/testimonial-3.jpg" alt="">
+                    </div>
                 </div>
             </div>
         </div>
@@ -641,7 +664,7 @@
                 <h4 class="text-primary mb-4">Get In Touch</h4>
                 <p><i class="fa fa-map-marker-alt mr-2"></i>Coimbatore,TamilNadu</p>
                 <p><i class="fa fa-phone-alt mr-2"></i>+91 95978 82019</p>
-                <p><i class="fa fa-envelope mr-2"></i>diyamodular.com</p>
+                <p><i class="fa fa-envelope mr-2"></i>diyamodular@gmail.com</p>
                 <div class="d-flex justify-content-start mt-4">
                     <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 38px; height: 38px;" href="#"><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 38px; height: 38px;" href="#"><i class="fab fa-facebook-f"></i></a>
